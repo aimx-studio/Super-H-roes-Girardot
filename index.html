@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Super Héroes Comidas Rápidas – Girardot</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hero-header">
+  <div class="logo-badge">
+  <img src="logo.jpg" alt="Super Héroes" style="width:100%;height:100%;object-fit:cover;border-radius:50%">
+</div>
+  <h1>SUPER HÉROES<span>Comidas Rápidas</span></h1>
+  <p class="tagline">🦸 Carnes 100% artesanales y naturales · Girardot</p>
+  <span class="delivery-badge">🛵 Domicilios: Girardot · Flandes · Ricaurte</span>
+</div>
+
+<form id="pedidoForm" onsubmit="enviarPedido(event)">
+
+  <!-- ===== HAMBURGUESAS ===== -->
+  <div class="menu-section cat-hamburguesas">
+    <h2 onclick="toggleMenu(this)">🍔 HAMBURGUESAS</h2>
+    <div class="platos">
+
+      <div class="sub-cat">🦇 BATIHAMBURGUESA</div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="BatiSencilla" value="Batihamburguesa Sencilla" onchange="toggleCantidad(this);toggleDescripcion(this)">Batihamburguesa Sencilla</label>
+          <span>$13.000</span>
+          <input type="number" class="cantidad" name="BatiSencillaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Pan de la casa, carne artesanal, lechuga, tomate, cebolla grille, queso, salsas de la casa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="BatiDoble" value="Batihamburguesa Doble" onchange="toggleCantidad(this);toggleDescripcion(this)">Batihamburguesa Doble</label>
+          <span>$17.000</span>
+          <input type="number" class="cantidad" name="BatiDobleCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Pan de la casa, carne artesanal, lechuga, tomate, cebolla grille, queso, salsas de la casa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="BatiMixta" value="Batihamburguesa Mixta con Pollo Apanado" onchange="toggleCantidad(this);toggleDescripcion(this)">Batihamburguesa Mixta c/Pollo Apanado</label>
+          <span>$19.000</span>
+          <input type="number" class="cantidad" name="BatiMixtaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Pan de la casa, carne artesanal con pollo apanado, lechuga, tomate, cebolla grille, queso, salsas de la casa.</div>
+      </div>
+
+      <div class="sub-cat">⚡ ESPECIALES</div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="ThorMexicana" value="Thor Mexicana" onchange="toggleCantidad(this);toggleDescripcion(this)">Thor Mexicana</label>
+          <span>$17.500</span>
+          <input type="number" class="cantidad" name="ThorMexicanaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Pan de la casa, carne artesanal, lechuga, tomate, cebolla grille, queso, salsas, guacamole, jalapeños y porción de papa a la francesa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="HulkRanchera" value="Hulk Ranchera" onchange="toggleCantidad(this);toggleDescripcion(this)">Hulk Ranchera</label>
+          <span>$17.500</span>
+          <input type="number" class="cantidad" name="HulkRancheraCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Pan de la casa, carne artesanal, lechuga, tomate, cebolla grille, queso, salsas de la casa, maíz tierno, salchicha ranchera, tocineta y porción de papa a la francesa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="SuperMaravilla" value="Super Maravilla" onchange="toggleCantidad(this);toggleDescripcion(this)">Super Maravilla</label>
+          <span>$17.500</span>
+          <input type="number" class="cantidad" name="SuperMaravillaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Pan de la casa, pollo apanado, lechuga, tomate, cebolla grille, queso, salsas de la casa y porción de papa a la francesa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="IntergalacticaColombia" value="Intergaláctica Colombiana" onchange="toggleCantidad(this);toggleDescripcion(this)">Intergaláctica Colombiana</label>
+          <span>$19.500</span>
+          <input type="number" class="cantidad" name="IntergalacticaColombianaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Pan de la casa, carne artesanal, lechuga, tomate, cebolla grille, salsas de la casa, huevo frito, chicharrón, tocineta y porción de papa a la francesa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="SuperHeroesHamb" value="Super Héroes Hamburguesa" onchange="toggleCantidad(this);toggleDescripcion(this)">Super Héroes</label>
+          <span>$20.000</span>
+          <input type="number" class="cantidad" name="SuperHeroesHambCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Pan de la casa, pechuga criolla, champiñones, lechuga, tomate, cebolla grille, queso, tocineta y porción de papa a la francesa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="EscuadronSuicida" value="Escuadrón Suicida" onchange="toggleCantidad(this);toggleDescripcion(this)">Escuadrón Suicida</label>
+          <span>$20.500</span>
+          <input type="number" class="cantidad" name="EscuadronSuicidaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Pan de la casa, carne artesanal, lechuga, tomate, cebolla grille, queso, salsas de la casa, pechuga de pollo, champiñón, tocineta y porción de papa a la francesa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="InsaciableHamb" value="Insaciable Hamburguesa" onchange="toggleCantidad(this);toggleDescripcion(this)">Insaciable</label>
+          <span>$20.500</span>
+          <input type="number" class="cantidad" name="InsaciableHambCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Pan de la casa, carne artesanal, lechuga, tomate, cebolla grille, queso, salsas de la casa, carne y pollo desmechado, longaniza, maíz y porción de papa a la francesa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="TributoMarvel" value="Tributo Marvel" onchange="toggleCantidad(this);toggleDescripcion(this)">Tributo Marvel</label>
+          <span>$21.500</span>
+          <input type="number" class="cantidad" name="TributoMarvelCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Pan de la casa, carne artesanal, lechuga, tomate, cebolla grille, queso, salsas de la casa, pechuga, pincho anclado y porción de papa a la francesa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="Rascacielo" value="El Rascacielo" onchange="toggleCantidad(this);toggleDescripcion(this)">El Rascacielo</label>
+          <span>$22.000</span>
+          <input type="number" class="cantidad" name="RascacieloCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Pan de la casa, carne artesanal, pollo criollo, huevo frito, lomo de cerdo, longaniza, chorizo, tomate, cebolla grille, queso, salsas de la casa y porción de papa a la francesa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="HambAngelus" value="Hamburguesa Angelus" onchange="toggleCantidad(this);toggleDescripcion(this)">⭐ Hamburguesa Angelus</label>
+          <span>$32.000</span>
+          <input type="number" class="cantidad" name="HambAngelusCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">200g de carne artesanal, pan brioche sellado, queso cheddar y americano, vegetales frescos, trozos de lomitos de cerdo y trozos de maduro.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== HOT DOG ===== -->
+  <div class="menu-section cat-hotdog">
+    <h2 onclick="toggleMenu(this)">🌭 HOT DOG</h2>
+    <div class="platos">
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="KiptonianoTrad" value="Kiptoniano Tradicional" onchange="toggleCantidad(this);toggleDescripcion(this)">Kiptoniano Tradicional</label>
+          <span>$12.000</span>
+          <input type="number" class="cantidad" name="KiptonianoTradCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Pan artesanal, salchicha long, queso, piña, cebolla grille, papa ripio y salsas de la casa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="SpidermanAmericano" value="Spiderman Americano" onchange="toggleCantidad(this);toggleDescripcion(this)">Spiderman Americano</label>
+          <span>$13.000</span>
+          <input type="number" class="cantidad" name="SpidermanAmericanoCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Pan de la casa, salchicha americana, queso, piña, cebolla grille, papa ripio y salsas de la casa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="ChoriAvengers" value="Chori Avengers" onchange="toggleCantidad(this);toggleDescripcion(this)">Chori Avengers</label>
+          <span>$13.500</span>
+          <input type="number" class="cantidad" name="ChoriAvengersCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Pan de la casa, chorizo ternera, queso, piña, cebolla grille, papa ripio y salsas de la casa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="MaravillaRanchera" value="Maravilla Ranchera" onchange="toggleCantidad(this);toggleDescripcion(this)">Maravilla Ranchera</label>
+          <span>$14.000</span>
+          <input type="number" class="cantidad" name="MaravillaRancheraCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Pan de la casa, cebolla grille, piña, maíz, longaniza, tocineta, queso gratinado, papa ripio y salsa de la casa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="CarnalMexicano" value="Carnal Mexicano" onchange="toggleCantidad(this);toggleDescripcion(this)">Carnal Mexicano</label>
+          <span>$14.500</span>
+          <input type="number" class="cantidad" name="CarnalMexicanoCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Pan artesanal, salchicha americana, jalapeños, queso gratinado, tocineta, papa ripio y salsas de la casa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="SuperInsaciableHD" value="Super Insaciable Hot Dog" onchange="toggleCantidad(this);toggleDescripcion(this)">Super Insaciable</label>
+          <span>$18.000</span>
+          <input type="number" class="cantidad" name="SuperInsaciableHDCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Pan artesanal, salchicha americana, piña, longaniza, tocineta, queso gratinado, maíz, carne y pollo desmechado, papa ripio y salsa de la casa.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== CARNES ===== -->
+  <div class="menu-section cat-carnes">
+    <h2 onclick="toggleMenu(this)">🥩 CARNES A LA PARRILLA</h2>
+    <div class="platos">
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="ResThor" value="Res Thor" onchange="toggleCantidad(this);toggleDescripcion(this)">Res Thor</label>
+          <span>$20.500</span>
+          <input type="number" class="cantidad" name="ResThorCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Carne de res 250g asada al carbón, acompañada de patacón, ensalada, papa a la francesa, chimichurri.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="CerdoIronman" value="Cerdo Ironman" onchange="toggleCantidad(this);toggleDescripcion(this)">Cerdo Ironman</label>
+          <span>$20.500</span>
+          <input type="number" class="cantidad" name="CerdoIronmanCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Carne de cerdo 250g asada al carbón, acompañada de patacón, ensalada, papa a la francesa, chimichurri.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="Mixta2Carnes" value="Mixta 2 Carnes" onchange="toggleCantidad(this);toggleDescripcion(this)">Mixta 2 Carnes</label>
+          <span>$21.500</span>
+          <input type="number" class="cantidad" name="Mixta2CarnesCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Combinación de res y cerdo, acompañada de patacón, ensalada, papa a la francesa, chimichurri.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="Mixta3Carnes" value="Mixta 3 Carnes" onchange="toggleCantidad(this);toggleDescripcion(this)">Mixta 3 Carnes</label>
+          <span>$24.500</span>
+          <input type="number" class="cantidad" name="Mixta3CarnesCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Combinación de res, cerdo y pollo, acompañada de patacón, ensalada, papa a la francesa, chimichurri.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PolloParrillaFlash" value="Pollo a la Parrilla Flash" onchange="toggleCantidad(this);toggleDescripcion(this)">Pollo a la Parrilla Flash</label>
+          <span>$21.000</span>
+          <input type="number" class="cantidad" name="PolloParrillaFlashCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Pechuga 250g asada al carbón, acompañada de patacón, ensalada, papa a la francesa, chimichurri. Pídela con champiñones o al ajillo con queso gratinado.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="ChulCerdo" value="Chuletón de Cerdo" onchange="toggleCantidad(this);toggleDescripcion(this)">⭐ Chuletón de Cerdo</label>
+          <span>$29.000</span>
+          <input type="number" class="cantidad" name="ChulCerdoCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">280g de jugosa carne de cerdo, papa francesa, patacón y ensalada.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="ChurrascoArgentino" value="Churrasco Argentino" onchange="toggleCantidad(this);toggleDescripcion(this)">⭐ Churrasco Argentino</label>
+          <span>$29.000</span>
+          <input type="number" class="cantidad" name="ChurrascoArgentinoCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">280g de jugosa carne de res, papa francesa, patacón y ensalada.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PechugaDeshuesada" value="Pechuga Deshuesada" onchange="toggleCantidad(this);toggleDescripcion(this)">⭐ Pechuga Deshuesada</label>
+          <span>$31.000</span>
+          <input type="number" class="cantidad" name="PechugaDeshuesadaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">300g de pollo deshuesado, papa francesa, patacón y ensalada.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== PINCHOS ===== -->
+  <div class="menu-section cat-pinchos">
+    <h2 onclick="toggleMenu(this)">🍢 PINCHOS</h2>
+    <div class="platos">
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="ResHulk" value="Res Hulk" onchange="toggleCantidad(this);toggleDescripcion(this)">Res Hulk</label>
+          <span>$16.000</span>
+          <input type="number" class="cantidad" name="ResHulkCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Trozos de carne de res, acompañado de cebolla, pimentón, papa a la francesa y ensalada.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="CerdoBatman" value="Cerdo Batman" onchange="toggleCantidad(this);toggleDescripcion(this)">Cerdo Batman</label>
+          <span>$16.000</span>
+          <input type="number" class="cantidad" name="CerdoBatmanCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Trozos de carne de cerdo, acompañado de cebolla, pimentón, papa a la francesa y ensalada.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PolloOdin" value="Pollo Odin" onchange="toggleCantidad(this);toggleDescripcion(this)">Pollo Odin</label>
+          <span>$16.000</span>
+          <input type="number" class="cantidad" name="PolloOdinCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Trozos de carne de pechuga, acompañado de cebolla, pimentón, papa a la francesa y ensalada.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="MixtoGuason" value="Mixto Guasón" onchange="toggleCantidad(this);toggleDescripcion(this)">Mixto Guasón</label>
+          <span>$17.000</span>
+          <input type="number" class="cantidad" name="MixtoGuasonCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Trozos de carne de cerdo, pollo y res, acompañado de cebolla, pimentón, papa a la francesa y ensalada.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== BBQ ===== -->
+  <div class="menu-section cat-bbq">
+    <h2 onclick="toggleMenu(this)">🔥 BBQ</h2>
+    <div class="platos">
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="CostillasBBQ" value="Costillas BBQ" onchange="toggleCantidad(this);toggleDescripcion(this)">Costillas BBQ</label>
+          <span>$24.000</span>
+          <input type="number" class="cantidad" name="CostillasBBQCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Costillas a la BBQ 350g con papa a la francesa y ensalada.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="MuslosBBQ" value="Muslos BBQ" onchange="toggleCantidad(this);toggleDescripcion(this)">Muslos BBQ</label>
+          <span>$18.000</span>
+          <input type="number" class="cantidad" name="MuslosBBQCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">4 unidades de muslos criollos bañados en salsa BBQ con papa a la francesa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="AlitasBBQ" value="Alitas BBQ" onchange="toggleCantidad(this);toggleDescripcion(this)">Alitas BBQ</label>
+          <span>$18.000</span>
+          <input type="number" class="cantidad" name="AlitasBBQCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Alitas de pollo a la BBQ 350g con papa a la francesa.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== MAZORCADA ===== -->
+  <div class="menu-section cat-mazorcada">
+    <h2 onclick="toggleMenu(this)">🌽 MAZORCADA</h2>
+    <div class="platos">
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="MazorcadaComics" value="Mazorcada Comics" onchange="toggleCantidad(this);toggleDescripcion(this)">Comics</label>
+          <select class="sabor" name="MazorcadaComicsSabor">
+            <option value="">Carne (elegir)</option>
+            <option value="Res">Res</option>
+            <option value="Pollo">Pollo</option>
+            <option value="Cerdo">Cerdo</option>
+          </select>
+          <span>$20.500</span>
+          <input type="number" class="cantidad" name="MazorcadaComicsCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">1 carne a elegir (Res, Pollo o Cerdo), maíz tierno, longaniza, queso gratinado, papa cabello de ángel y salsa de la casa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="MazorcadaDesgranado" value="Mazorcada Desgranado" onchange="toggleCantidad(this);toggleDescripcion(this)">Desgranado</label>
+          <select class="sabor" name="MazorcadaDesgranadoSabor">
+            <option value="">Carne (elegir)</option>
+            <option value="Res">Res</option>
+            <option value="Pollo">Pollo</option>
+            <option value="Cerdo">Cerdo</option>
+          </select>
+          <span>$23.500</span>
+          <input type="number" class="cantidad" name="MazorcadaDesgranadoCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">1 carne a elegir (Res, Pollo o Cerdo), maíz tierno, longaniza, queso gratinado, papa cabello de ángel, salsa de la casa y papa a la francesa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="MazorcadaAvengers" value="Mazorcada Avengers" onchange="toggleCantidad(this);toggleDescripcion(this)">Avengers</label>
+          <span>$25.000</span>
+          <input type="number" class="cantidad" name="MazorcadaAvengersCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">2 carnes a elegir (Res, Cerdo o Pollo), maíz tierno, longaniza, queso gratinado, papa cabello de ángel y salsa de la casa.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== SALCHIPAPA ===== -->
+  <div class="menu-section cat-salchipapa">
+    <h2 onclick="toggleMenu(this)">🍟 SALCHIPAPA</h2>
+    <div class="platos">
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="SalchipapaComic" value="Salchipapa Comic" onchange="toggleCantidad(this);toggleDescripcion(this)">Comic</label>
+          <span>$12.000</span>
+          <input type="number" class="cantidad" name="SalchipapaComicCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Porción de papa a la francesa, queso gratinado, acompañada de salchicha americana y salsas de la casa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="Choripapa" value="Choripapa" onchange="toggleCantidad(this);toggleDescripcion(this)">Choripapa</label>
+          <span>$13.500</span>
+          <input type="number" class="cantidad" name="ChoripapasCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Porción de papa a la francesa, acompañada de chorizo y salsas de la casa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="SalchipapaInsaciable" value="Salchipapa Insaciable" onchange="toggleCantidad(this);toggleDescripcion(this)">Insaciable</label>
+          <span>$16.000</span>
+          <input type="number" class="cantidad" name="SalchipapaInsaciableCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Porción de papa a la francesa, salchicha americana, chorizo ternera, tocineta, queso gratinado, cabello de ángel, maíz y salsas de la casa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="SalchipapaPoderosa" value="Salchipapa Poderosa" onchange="toggleCantidad(this);toggleDescripcion(this)">Poderosa</label>
+          <span>$18.000</span>
+          <input type="number" class="cantidad" name="SalchipapaPoderosasCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Porción poderosa de papa a la francesa, salchicha americana, chorizo, carne y pollo desmechado, queso gratinado y salsas de la casa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="SalchipapaAmericana" value="Salchipapa Americana" onchange="toggleCantidad(this);toggleDescripcion(this)">⭐ Americana</label>
+          <span>$38.000</span>
+          <input type="number" class="cantidad" name="SalchipapaAmericanaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Combinación de papa criolla y francesa, queso americano, salchicha americana, longaniza, trozos de res, costillas y pollo, cabello de ángel y salsas de la casa.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== PATACONES ===== -->
+  <div class="menu-section cat-patacones">
+    <h2 onclick="toggleMenu(this)">🫓 PATACONES</h2>
+    <div class="platos">
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PataMixtoMaravilla" value="Patacón Mixto Maravilla" onchange="toggleCantidad(this);toggleDescripcion(this)">Mixto Maravilla</label>
+          <span>$13.500</span>
+          <input type="number" class="cantidad" name="PataMixtoMaravillaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Patacón natural, queso, carne y pollo.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PataHulkRanchera" value="Patacón Hulk Ranchera" onchange="toggleCantidad(this);toggleDescripcion(this)">Hulk Ranchera</label>
+          <span>$15.000</span>
+          <input type="number" class="cantidad" name="PataHulkRancheraCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Patacón natural, queso, longaniza, carne y maíz.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PataconPaisa" value="Patacón Paisa" onchange="toggleCantidad(this);toggleDescripcion(this)">Patacón Paisa</label>
+          <span>$14.000</span>
+          <input type="number" class="cantidad" name="PataconPaisaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Carne desmechada, trozos de chorizo, queso gratinado.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PataconSuperH" value="Patacón Super Héroes" onchange="toggleCantidad(this);toggleDescripcion(this)">Super Héroes</label>
+          <span>$15.000</span>
+          <input type="number" class="cantidad" name="PataconSuperHCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Patacón natural, queso, pollo, champiñón y tocineta.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PataconInsaciable" value="Patacón Insaciable de la Casa" onchange="toggleCantidad(this);toggleDescripcion(this)">Insaciable de la Casa</label>
+          <span>$16.000</span>
+          <input type="number" class="cantidad" name="PataconInsaciableCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Patacón natural, queso, carne, pollo, maíz y longaniza.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== AREPAS RELLENAS ===== -->
+  <div class="menu-section cat-arepa">
+    <h2 onclick="toggleMenu(this)">🫔 AREPAS RELLENAS</h2>
+    <div class="platos">
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="ArepaTradicionalComic" value="Arepa Tradicional Comic" onchange="toggleCantidad(this);toggleDescripcion(this)">Tradicional Comic</label>
+          <span>$4.000</span>
+          <input type="number" class="cantidad" name="ArepaTradicionalComicCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Arepa, queso, jamón.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="ArepaMixtaMaravilla" value="Arepa Mixta Maravilla" onchange="toggleCantidad(this);toggleDescripcion(this)">Mixta Maravilla</label>
+          <span>$12.000</span>
+          <input type="number" class="cantidad" name="ArepaMixtaMaravillaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Arepa, queso, carne y pollo.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="ArepaHulkRanchera" value="Arepa Hulk Ranchera" onchange="toggleCantidad(this);toggleDescripcion(this)">Hulk Ranchera</label>
+          <span>$12.500</span>
+          <input type="number" class="cantidad" name="ArepaHulkRancheraCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Arepa, queso, carne, maíz y longaniza.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="ArepaSuperHeroes" value="Arepa Super Héroes" onchange="toggleCantidad(this);toggleDescripcion(this)">Super Héroes</label>
+          <span>$12.000</span>
+          <input type="number" class="cantidad" name="ArepaSuperHeroesCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Arepa, queso, pollo criollo, champiñón y tocineta.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="ArepaInsaciable" value="Arepa Insaciable" onchange="toggleCantidad(this);toggleDescripcion(this)">Insaciable</label>
+          <span>$13.000</span>
+          <input type="number" class="cantidad" name="ArepaInsaciableCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Arepa, queso, carne, pollo, maíz y longaniza.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== ENTRADAS ===== -->
+  <div class="menu-section cat-entradas">
+    <h2 onclick="toggleMenu(this)">🥗 ENTRADAS</h2>
+    <div class="platos">
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="ArosChorizo" value="Aros de Cebolla con Chorizo" onchange="toggleCantidad(this);toggleDescripcion(this)">Aros de Cebolla c/Chorizo</label>
+          <span>$13.000</span>
+          <input type="number" class="cantidad" name="ArosChorizoCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">4 unidades de aros de cebolla crocantes con chorizo ternera en trozos y salsas de la casa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="NachosM" value="Nachos a la Mexicana" onchange="toggleCantidad(this);toggleDescripcion(this)">Nachos a la Mexicana</label>
+          <span>$13.500</span>
+          <input type="number" class="cantidad" name="NachosMCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Deliciosos nachos mexicanos con salsa cheddar y guacamole para acompañar.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PataconesCasa" value="Patacones de la Casa" onchange="toggleCantidad(this);toggleDescripcion(this)">Patacones de la Casa</label>
+          <span>$11.000</span>
+          <input type="number" class="cantidad" name="PataconesCasaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">4 crujientes patacones de la casa, con salsas de la casa y guacamole.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="EmpanadasCasa" value="Empanadas de la Casa" onchange="toggleCantidad(this);toggleDescripcion(this)">Empanadas de la Casa</label>
+          <span>$10.000</span>
+          <input type="number" class="cantidad" name="EmpanadasCasaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">4 empanadas de la casa, incluye salsas de la casa y guacamole.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="DedosQueso" value="Dedos de Queso" onchange="toggleCantidad(this);toggleDescripcion(this)">Dedos de Queso</label>
+          <span>$10.000</span>
+          <input type="number" class="cantidad" name="DedosQuesoCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">5 deditos repletos de queso con papa a la francesa y guacamole.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== SANDWISH ===== -->
+  <div class="menu-section cat-sandwish">
+    <h2 onclick="toggleMenu(this)">🥪 SANDWISH</h2>
+    <div class="platos">
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="SandwishPoderoso" value="Sandwish Poderoso" onchange="toggleCantidad(this);toggleDescripcion(this)">Poderoso</label>
+          <span>$15.000</span>
+          <input type="number" class="cantidad" name="SandwishPoderosCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Emparedado a base de carne y pollo, lechuga crespa, tomate vegetal, queso blanco y salsa de la casa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="SandwishSH" value="Sandwish Super Héroes" onchange="toggleCantidad(this);toggleDescripcion(this)">Super Héroes</label>
+          <span>$18.500</span>
+          <input type="number" class="cantidad" name="SandwishSHCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Carnes, maíz, champiñones, queso, tomate, lechuga y cebolla.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PepitoVenezolano" value="Pepito Venezolano" onchange="toggleCantidad(this);toggleDescripcion(this)">Pepito Venezolano</label>
+          <span>$18.000</span>
+          <input type="number" class="cantidad" name="PepitoVenezolanoCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Papa a la francesa y comida tipo Sandwish, con proteína de carne, pollo, vegetales, salsa de ajo.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="BurritosM" value="Burritos a la Mexicana" onchange="toggleCantidad(this);toggleDescripcion(this)">⭐ Burritos a la Mexicana</label>
+          <span>$22.000</span>
+          <input type="number" class="cantidad" name="BurritosMCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Tortillita de harina, vegetales frescos, queso crujiente junto con la proteína res y pollo, acompañados de nachos y queso cheddar.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== ENSALADAS ===== -->
+  <div class="menu-section cat-ensaladas">
+    <h2 onclick="toggleMenu(this)">🥬 ENSALADAS</h2>
+    <div class="platos">
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="EnsaladaSH" value="Ensalada Super Héroes" onchange="toggleCantidad(this);toggleDescripcion(this)">Super Héroes</label>
+          <span>$18.500</span>
+          <input type="number" class="cantidad" name="EnsaladaSHCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Carnes, maíz, champiñones, queso, tomate, lechuga, cebolla.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== PORCIONES ===== -->
+  <div class="menu-section cat-entradas">
+    <h2 onclick="toggleMenu(this)" style="background:#455a64">🍽️ PORCIONES</h2>
+    <div class="platos">
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PorcTocineta" value="Porción Tocineta" onchange="toggleCantidad(this);toggleDescripcion(this)">Porción Tocineta</label>
+          <span>$4.000</span>
+          <input type="number" class="cantidad" name="PorcTocinetaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none"></div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PorcPatacones" value="Patacones 2 unidades" onchange="toggleCantidad(this);toggleDescripcion(this)">Patacones (2 unid.)</label>
+          <span>$5.000</span>
+          <input type="number" class="cantidad" name="PorcPataconesCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none"></div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PorcPapaFrancesa" value="Porción Papa a la Francesa" onchange="toggleCantidad(this);toggleDescripcion(this)">Papa a la Francesa</label>
+          <span>$6.000</span>
+          <input type="number" class="cantidad" name="PorcPapaFrancesaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none"></div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PorcNuggets" value="Nuggets 3 unidades" onchange="toggleCantidad(this);toggleDescripcion(this)">Nuggets (3 unid.)</label>
+          <span>$4.500</span>
+          <input type="number" class="cantidad" name="PorcNuggetsCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== PICADAS ===== -->
+  <div class="menu-section cat-picada">
+    <h2 onclick="toggleMenu(this)">🥘 PICADAS</h2>
+    <div class="platos">
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PicadaInsaciable" value="Picada Insaciable Familiar" onchange="toggleCantidad(this);toggleDescripcion(this)">Insaciable Familiar</label>
+          <span>$54.000</span>
+          <input type="number" class="cantidad" name="PicadaInsaciableCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Combinación de res, cerdo, pollo, costillas de cerdo, acompañadas de papa a la francesa, patacón, chimichurri y longaniza.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PicadaWolve2" value="Picada Wolve para 2 Personas" onchange="toggleCantidad(this);toggleDescripcion(this)">Wolve para 2 Personas</label>
+          <span>$33.000</span>
+          <input type="number" class="cantidad" name="PicadaWolve2Cantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Combinación de 2 carnes, acompañadas de papa a la francesa, patacón, chimichurri y longaniza.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PicadaBatman3" value="Batman para 3 Personas" onchange="toggleCantidad(this);toggleDescripcion(this)">Batman para 3 Personas</label>
+          <span>$43.000</span>
+          <input type="number" class="cantidad" name="PicadaBatman3Cantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Combinación de 3 carnes, acompañadas de papa a la francesa, patacón, chimichurri y longaniza.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== COMBOS ===== -->
+  <div class="menu-section cat-combos">
+    <h2 onclick="toggleMenu(this)">🦸 COMBOS</h2>
+    <div class="platos">
+
+      <div class="sub-cat">COMBOS PERSONALES</div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PersonalMarvel" value="Personal Marvel" onchange="toggleCantidad(this);toggleDescripcion(this)">Personal Marvel</label>
+          <span>$19.000</span>
+          <input type="number" class="cantidad" name="PersonalMarvelCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Hamburguesa sencilla o hot dog tradicional, acompañados de papa a la francesa, gaseosa personal y salsas de la casa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="CapitanInfantil" value="Capitán América Menú Infantil" onchange="toggleCantidad(this);toggleDescripcion(this)">Capitán América Infantil</label>
+          <span>$20.000</span>
+          <input type="number" class="cantidad" name="CapitanInfantilCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Mini hamburguesa o perro tradicional, acompañado de papa a la francesa, nuggets, gaseosa mini y salsas.</div>
+      </div>
+
+      <div class="sub-cat">COMBOS PARA COMPARTIR</div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="FamiliarAquaman" value="Familiar Aquaman" onchange="toggleCantidad(this);toggleDescripcion(this)">Familiar Aquaman</label>
+          <span>$30.000</span>
+          <input type="number" class="cantidad" name="FamiliarAquamanCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">2 hamburguesas sencillas o hot dogs tradicionales, acompañados de 1 porción de papa a la francesa, gaseosa familiar 1.5lt y salsas de la casa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="SuperGalactico" value="Super Galáctico" onchange="toggleCantidad(this);toggleDescripcion(this)">Super Galáctico</label>
+          <span>$48.000</span>
+          <input type="number" class="cantidad" name="SuperGalacticoCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">4 hamburguesas sencillas o hot dogs tradicionales, acompañados de 2 porciones de papa a la francesa y gaseosa familiar 1.5lt, junto con salsas de la casa.</div>
+      </div>
+
+      <div class="sub-cat">COMBOS ESPECIALES</div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="ComboFalcon" value="Combo Falcon" onchange="toggleCantidad(this);toggleDescripcion(this)">Falcon (para 2)</label>
+          <span>$48.000</span>
+          <input type="number" class="cantidad" name="ComboFalconCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">4 Alas BBQ, 4 Muslos BBQ, 1 porción de papa francesa, 1 porción de patacón y 1 gaseosa 1.5lt.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="ComboDeadpool" value="Combo Deadpool" onchange="toggleCantidad(this);toggleDescripcion(this)">Deadpool (para 2)</label>
+          <span>$46.000</span>
+          <input type="number" class="cantidad" name="ComboDeadpoolCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">1 Pepito, 1 Sandwish Colombiano, 1 porción de papa francesa y 1 gaseosa 1.5lt.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="ComboAtMan" value="Combo At-Man" onchange="toggleCantidad(this);toggleDescripcion(this)">At-Man</label>
+          <span>$41.000</span>
+          <input type="number" class="cantidad" name="ComboAtManCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">1 Patacón de la casa, 1 Arepa Insaciable, 1 porción de papa francesa, 1 porción de patacón y 1 gaseosa 1.5lt.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="ComboVengadores" value="Combo Vengadores" onchange="toggleCantidad(this);toggleDescripcion(this)">Vengadores</label>
+          <span>$64.000</span>
+          <input type="number" class="cantidad" name="ComboVengadoresCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">4 Mazorcadas Minis, 2 porciones de papa francesa, 1 porción de empanadas y 1 gaseosa 1.5lt.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="ComboGladiador" value="Combo Gladiador" onchange="toggleCantidad(this);toggleDescripcion(this)">Gladiador</label>
+          <span>$71.000</span>
+          <input type="number" class="cantidad" name="ComboGladiadorCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">1 Picada Insaciable (Res, Cerdo, Pollo, Costillas), 1 porción de empanadas, 1 porción de papa francesa y 1 gaseosa 1.5lt.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== PROMOCIÓN DEL MES ===== -->
+  <div class="menu-section cat-promo">
+    <h2 onclick="toggleMenu(this)">🎉 PROMOCIÓN DEL MES</h2>
+    <div class="platos">
+
+      <!-- Combo Familiar -->
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PromoComboFamiliar" value="Promo Combo Familiar" onchange="toggleCantidad(this);toggleDescripcion(this)">Combo Familiar</label>
+          <select class="sabor" name="PromoComboFamiliarOpcion">
+            <option value="">Escoger</option>
+            <option value="2 Hamburguesas">2 Hamburguesas</option>
+            <option value="2 Perros Calientes">2 Perros Calientes</option>
+            <option value="2 Salchipapas">2 Salchipapas</option>
+          </select>
+          <span>$30.000</span>
+          <input type="number" class="cantidad" name="PromoComboFamiliarCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">2 unidades (Hamburguesa, Perro Caliente o Salchipapa) + 1 Porción de Papa a la Francesa + 1 Gaseosa 1.5lt.</div>
+      </div>
+
+      <!-- Super Galáctico Promo -->
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PromoSuperGalactico" value="Promo Super Galáctico" onchange="toggleCantidad(this);toggleDescripcion(this)">Super Galáctico</label>
+          <select class="sabor" name="PromoSuperGalacticoOpcion">
+            <option value="">Escoger</option>
+            <option value="4 Hamburguesas">4 Hamburguesas</option>
+            <option value="4 Perros Calientes">4 Perros Calientes</option>
+            <option value="4 Salchipapas">4 Salchipapas</option>
+          </select>
+          <span>$48.000</span>
+          <input type="number" class="cantidad" name="PromoSuperGalacticoCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">4 unidades (Hamburguesa, Perro Caliente o Salchipapa) + 2 Porciones de Papa a la Francesa + 1 Gaseosa 1.5lt.</div>
+      </div>
+
+      <!-- Terna Cómics -->
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PromTernaComics" value="Promo Terna Cómics" onchange="toggleCantidad(this);toggleDescripcion(this)">Terna Cómics</label>
+          <select class="sabor" name="PromTernaComicsOpcion">
+            <option value="">Escoger</option>
+            <option value="3 Hamburguesas">3 Hamburguesas</option>
+            <option value="3 Perros Calientes">3 Perros Calientes</option>
+            <option value="3 Salchipapas">3 Salchipapas</option>
+          </select>
+          <span>$42.000</span>
+          <input type="number" class="cantidad" name="PromTernaComicsCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">3 unidades (Hamburguesa, Perro Caliente o Salchipapa) + 2 Porciones de Papa a la Francesa + 1 Gaseosa 1.5lt.</div>
+      </div>
+
+      <!-- Marvel Héroes -->
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PromoMarvelHeroes" value="Promo Marvel Héroes" onchange="toggleCantidad(this);toggleDescripcion(this)">Marvel Héroes</label>
+          <span>$43.000</span>
+          <input type="number" class="cantidad" name="PromoMarvelHeroesCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">2 Mazorcadas + 1 Proteína + 1 Porción de Papa a la Francesa + 1 Gaseosa 1.5lt.</div>
+      </div>
+
+      <!-- Carnívoro Héroes -->
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PromoCarnivoro" value="Promo Carnívoro Héroes" onchange="toggleCantidad(this);toggleDescripcion(this)">Carnívoro Héroes</label>
+          <span>$46.000</span>
+          <input type="number" class="cantidad" name="PromoCarnIvoroCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">2 Picadas + 1 Carne + 1 Porción de Papa a la Francesa + 1 Longaniza en trozos + 1 Gaseosa 1.5lt.</div>
+      </div>
+
+      <!-- Super Oferta 2 Perros -->
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PromoSuperOferta2" value="Super Oferta 2 Perros Americanos" onchange="toggleCantidad(this);toggleDescripcion(this)">Super Oferta 2 Perros</label>
+          <span>$25.000</span>
+          <input type="number" class="cantidad" name="PromoSuperOferta2Cantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">2 Perros Americanos + 1 Porción de Papa a la Francesa.</div>
+      </div>
+
+      <!-- Super Oferta 4 Perros -->
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="PromoSuperOferta4" value="Super Oferta 4 Perros Americanos" onchange="toggleCantidad(this);toggleDescripcion(this)">Super Oferta 4 Perros</label>
+          <span>$43.000</span>
+          <input type="number" class="cantidad" name="PromoSuperOferta4Cantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">4 Perros Americanos + 1 Porción de Papa a la Francesa.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== BEBIDAS ===== -->
+  <div class="menu-section cat-bebidas bebidas">
+    <h2 onclick="toggleMenu(this)">🥤 BEBIDAS</h2>
+    <div class="platos">
+
+      <div class="sub-cat">JUGOS NATURALES</div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="JugoEnAgua" value="Jugo Natural en Agua" onchange="toggleCantidad(this);toggleDescripcion(this)">Jugo Natural en Agua</label>
+          <select class="sabor" name="JugoEnAguaSabor">
+            <option value="">Sabor</option>
+            <option value="Mora">Mora</option>
+            <option value="Sandía">Sandía</option>
+            <option value="Fresa">Fresa</option>
+            <option value="Lulo">Lulo</option>
+            <option value="Maracuyá">Maracuyá</option>
+            <option value="Mango">Mango</option>
+          </select>
+          <span>$7.500</span>
+          <input type="number" class="cantidad" name="JugoEnAguaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Jugos naturales: Mora, Sandía, Fresa, Lulo, Maracuyá o Mango.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="JugoEnLeche" value="Jugo Natural en Leche" onchange="toggleCantidad(this);toggleDescripcion(this)">Jugo Natural en Leche</label>
+          <select class="sabor" name="JugoEnLecheSabor">
+            <option value="">Sabor</option>
+            <option value="Mora">Mora</option>
+            <option value="Sandía">Sandía</option>
+            <option value="Fresa">Fresa</option>
+            <option value="Lulo">Lulo</option>
+            <option value="Maracuyá">Maracuyá</option>
+            <option value="Mango">Mango</option>
+          </select>
+          <span>$8.000</span>
+          <input type="number" class="cantidad" name="JugoEnLecheCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Jugos naturales en leche: Mora, Sandía, Fresa, Lulo, Maracuyá o Mango.</div>
+      </div>
+
+      <div class="sub-cat">GRANIZADOS</div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="GranizadoMaravilla" value="Granizado Maravilla" onchange="toggleCantidad(this);toggleDescripcion(this)">Granizado Maravilla</label>
+          <span>$8.000</span>
+          <input type="number" class="cantidad" name="GranizadoMaravillaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Mora, sandía y fresa.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="GranizadoHulk" value="Granizado Hulk" onchange="toggleCantidad(this);toggleDescripcion(this)">Granizado Hulk</label>
+          <span>$8.000</span>
+          <input type="number" class="cantidad" name="GranizadoHulkCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none">Lulo, maracuyá y mango.</div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="GranizadoYerba" value="Granizado Yerbabuena" onchange="toggleCantidad(this);toggleDescripcion(this)">Granizado Yerbabuena</label>
+          <span>$8.000</span>
+          <input type="number" class="cantidad" name="GranizadoYerbaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none"></div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="GranizadoCoco" value="Granizado de Coco" onchange="toggleCantidad(this);toggleDescripcion(this)">Granizado de Coco</label>
+          <span>$8.000</span>
+          <input type="number" class="cantidad" name="GranizadoCocoCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none"></div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="GranizadoCerezada" value="Granizado Cerezada" onchange="toggleCantidad(this);toggleDescripcion(this)">Granizado Cerezada</label>
+          <span>$8.000</span>
+          <input type="number" class="cantidad" name="GranizadoCerezadaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none"></div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="LimonadaNatural" value="Limonada Natural" onchange="toggleCantidad(this);toggleDescripcion(this)">Limonada Natural</label>
+          <span>$8.000</span>
+          <input type="number" class="cantidad" name="LimonadaNaturalCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none"></div>
+      </div>
+
+      <div class="sub-cat">GASEOSAS Y OTROS</div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="GaseosaPersonal" value="Gaseosa Personal" onchange="toggleCantidad(this);toggleDescripcion(this)">Gaseosa Personal</label>
+          <span>$4.500</span>
+          <input type="number" class="cantidad" name="GaseosaPersonalCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none"></div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="Gaseosa1lt" value="Gaseosa 1.5lt" onchange="toggleCantidad(this);toggleDescripcion(this)">Gaseosa 1.5lt</label>
+          <span>$8.500</span>
+          <input type="number" class="cantidad" name="Gaseosa1ltCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none"></div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="GaseosaFamiliar" value="Gaseosa Familiar 1.5lt" onchange="toggleCantidad(this);toggleDescripcion(this)">Gaseosa Familiar 1.5lt</label>
+          <span>$11.000</span>
+          <input type="number" class="cantidad" name="GaseosaFamiliarCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none"></div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="ColaPola" value="Cola y Pola" onchange="toggleCantidad(this);toggleDescripcion(this)">Cola y Pola</label>
+          <span>$4.500</span>
+          <input type="number" class="cantidad" name="ColaPolaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none"></div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="CervezaLightclub" value="Cerveza Lightclub" onchange="toggleCantidad(this);toggleDescripcion(this)">Cerveza Lightclub</label>
+          <span>$4.500</span>
+          <input type="number" class="cantidad" name="CervezaLightclubCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none"></div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="CervezaAguila" value="Cerveza Águila/Poker" onchange="toggleCantidad(this);toggleDescripcion(this)">Cerveza Águila/Poker</label>
+          <span>$4.500</span>
+          <input type="number" class="cantidad" name="CervezaAguilaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none"></div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="AguaBottella" value="Agua en Botella" onchange="toggleCantidad(this);toggleDescripcion(this)">Agua en Botella</label>
+          <span>$3.500</span>
+          <input type="number" class="cantidad" name="AguaBottellaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none"></div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="JugosHit" value="Jugos Hit" onchange="toggleCantidad(this);toggleDescripcion(this)">Jugos Hit</label>
+          <span>$4.500</span>
+          <input type="number" class="cantidad" name="JugosHitCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none"></div>
+      </div>
+
+      <div class="item">
+        <div class="item-linea">
+          <label><input type="checkbox" class="check-plato" name="Soda" value="Soda" onchange="toggleCantidad(this);toggleDescripcion(this)">Soda</label>
+          <span>$4.500</span>
+          <input type="number" class="cantidad" name="SodaCantidad" value="0" min="0" disabled onchange="calcularTotal()">
+        </div>
+        <div class="descripcion" style="display:none"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== DATOS DEL CLIENTE ===== -->
+  <div class="menu-section cat-cliente">
+    <h2 onclick="toggleMenu(this)">📝 Detalles del Cliente</h2>
+    <div class="platos" style="display:block">
+      <div class="form-group">
+        <label>👤 Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
+      </div>
+      <div class="form-group">
+        <label>📞 Número de WhatsApp:</label>
+        <input type="tel" id="telefono" name="telefono" required placeholder="Ej: 3001234567">
+      </div>
+      <div class="form-group">
+        <label>📦 Tipo de entrega:</label>
+        <select id="tipoEntrega" name="tipoEntrega" required onchange="manejarEntrega(this.value)">
+          <option value="">-- Selecciona --</option>
+          <option value="Recoger en el local">Recoger en el local</option>
+          <option value="A domicilio">A domicilio</option>
+          <option value="Comer dentro del local">Comer dentro del local</option>
+        </select>
+      </div>
+      <div class="form-group" id="direccionField" style="display:none">
+        <label>📍 Dirección:</label>
+        <input type="text" id="direccion" name="direccion" placeholder="Escribe tu dirección completa">
+        <small>🛵 Servicio a domicilio en Girardot, Flandes y Ricaurte</small>
+      </div>
+      <div class="form-group" id="mesaField" style="display:none">
+        <label>🔢 Número de mesa:</label>
+        <input type="text" id="numeroMesa" name="numeroMesa" placeholder="Número de mesa">
+      </div>
+      <div class="form-group">
+        <label>💰 Tipo de pago:</label>
+        <select id="tipoPago" name="tipoPago" required onchange="manejarPago(this.value)">
+          <option value="">-- Selecciona --</option>
+          <option value="Efectivo">Efectivo</option>
+          <option value="Nequi">Nequi</option>
+          <option value="Llave Bre-B">Llave Bre-B</option>
+          <option value="Daviplata">Daviplata</option>
+        </select>
+      </div>
+      <div class="form-group" id="efectivoField" style="display:none">
+        <label>💵 Con cuánto pagará:</label>
+        <small>Esto ayuda a preparar el cambio correcto 🙏</small>
+        <input type="text" id="efectivoCliente" name="efectivoMonto" placeholder="Ej: $50.000">
+      </div>
+      
+        <div class="form-group" id="infoPago" style="display:none">
+        <div id="infoNequi" class="info-transferencia" style="display:none"></div>
+        <div id="infoBanco" class="info-transferencia" style="display:none"></div>
+        <div id="infoDaviplata" class="info-transferencia" style="display:none">
+          <p><strong>💳 Daviplata</strong></p>
+          <p>300 811 1846</p>
+          <p><strong>Jaime Rodriguez</strong></p>
+          <small>⚠️ POR FAVOR ENVIAR EL PANTALLAZO DE LA TRANSFERENCIA POR WHATSAPP</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>📒 Especificaciones:</label>
+        <textarea id="especificaciones" name="especificaciones" placeholder="Ej: sin cebolla, sin salsas, extra queso..." rows="3"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TOTAL Y ENVÍO ===== -->
+  <div class="menu-section cat-total">
+    <h2>💸 TOTAL: <span id="total">$0</span></h2>
+    <input type="hidden" name="totalPedido" id="totalPedido" value="0">
+    <div style="padding: 14px">
+      <div class="form-group" style="border:none;padding:0 0 12px 0">
+        <label class="confirm-label">
+          <input type="checkbox" id="confirmPedido" required>
+          ✅ Autorizo el tratamiento de mis datos para gestionar este pedido.
+        </label>
+      </div>
+      <button type="submit" class="btn" id="btnEnviar">📲 Enviar Pedido por WhatsApp</button>
+      <p style="text-align:center;margin-top:10px;font-size:0.78rem;color:#888">
+        📍 Plazoleta Comidas Rápidas · Parque Central Local 1 · B/ Kennedy Girardot<br>
+        🛵 Domicilios: 300 811 1846
+      </p>
+    </div>
+  </div>
+
+</form>
+<script src="scrip.js"></script>
+</body>
+</html>
