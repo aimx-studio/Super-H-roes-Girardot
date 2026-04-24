@@ -85,26 +85,60 @@
 <div class="ticket" id="ticket" style="display:none"></div>
 
 <script>
-  // ── LEER DATOS DIRECTAMENTE DE LA URL (sin llamada a Supabase) ──────────
+  const SUPABASE_URL = "https://rsiqorucrflmrfqejkeb.supabase.co";
+  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzaXFvcnVjcmZsbXJmcWVqa2ViIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5ODk2MDEsImV4cCI6MjA5MjU2NTYwMX0.Dg8FqwX17zgiNlXOPJgz1IJQR3jDBizBgzQ-x-UvPZs";
+
   const params = new URLSearchParams(window.location.search);
 
-  const p = {
-    id:       params.get("id")       || "—",
-    Fecha:    params.get("fecha")    || "—",
-    Nombre:   params.get("nombre")   || "—",
-    Telefono: params.get("tel")      || "—",
-    Platos:   params.get("platos")   || "",
-    Entrega:  params.get("entrega")  || "—",
-    Direccion:params.get("dir")      || "",
-    Pago:     params.get("pago")     || "",
-    Total:    params.get("total")    || "—"
-  };
+  if (params.has("nombre") || params.has("platos")) {
+    renderTicket({
+      id:        params.get("id")      || "—",
+      Fecha:     params.get("fecha")   || "—",
+      Nombre:    params.get("nombre")  || "—",
+      Telefono:  params.get("tel")     || "—",
+      Platos:    params.get("platos")  || "",
+      Entrega:   params.get("entrega") || "—",
+      Direccion: params.get("dir")     || "",
+      Pago:      params.get("pago")    || "",
+      Total:     params.get("total")   || "—"
+    });
 
-  if (!params.has("nombre") && !params.has("platos")) {
-    document.getElementById("cargando").textContent = "❌ No se encontró el ticket.";
+  } else if (params.has("id")) {
+    fetch(`${SUPABASE_URL}/rest/v1/pedidos?id=eq.${params.get("id")}&select=*`, {
+      headers: {
+        "apikey": SUPABASE_KEY,
+        "Authorization": `Bearer ${SUPABASE_KEY}`
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (!data || data.length === 0) {
+        document.getElementById("cargando").textContent = "❌ No se encontró el ticket.";
+        return;
+      }
+      const r = data[0];
+      renderTicket({
+        id:        r.id        || "—",
+        Fecha:     r.Fecha     || "—",
+        Nombre:    r.Nombre    || "—",
+        Telefono:  r.Telefono  || "—",
+        Platos:    r.Platos    || "",
+        Entrega:   r.Entrega   || "—",
+        Direccion: r.Direccion || "",
+        Pago:      r.Pago      || "",
+        Total:     r.Total     || "—"
+      });
+    })
+    .catch(() => {
+      document.getElementById("cargando").textContent = "❌ Error al cargar el ticket.";
+    });
+
   } else {
-    const platos = p.Platos.split("\n").filter(Boolean);
+    document.getElementById("cargando").textContent = "❌ No se encontró el ticket.";
+  }
 
+  function renderTicket(p) {
+    const platos = p.Platos.split("\n").filter(Boolean);
     const platosHTML = platos.map(linea => {
       const match = linea.match(/[•\-]?\s*(\d+)x?\s+(.+)/);
       if (match) {
@@ -122,47 +156,26 @@
         <div class="t-sub">Comidas Rápidas</div>
         <div class="t-direccion">Plazoleta Comidas · Parque Central Local 1 · Girardot</div>
       </div>
-
       <hr class="sep">
-
-      <div class="fila">
-        <span>PEDIDO #</span>
-        <span class="fila-val">${p.id}</span>
-      </div>
-      <div class="fila">
-        <span>FECHA/HORA</span>
-        <span class="fila-val">${p.Fecha}</span>
-      </div>
-
+      <div class="fila"><span>PEDIDO #</span><span class="fila-val">${p.id}</span></div>
+      <div class="fila"><span>FECHA/HORA</span><span class="fila-val">${p.Fecha}</span></div>
       <hr class="sep">
-
       <div class="sec-label">CLIENTE</div>
       <div class="cliente-nombre">${p.Nombre}</div>
       <div class="cliente-tel">📞 ${p.Telefono}</div>
-
       <hr class="sep">
-
       <div class="sec-label">DETALLE DEL PEDIDO</div>
       ${platosHTML}
-
       <hr class="sep">
-
-      <div class="info-fila">
-        <span class="info-label">ENTREGA</span>
-        <span class="info-val">${p.Entrega}</span>
-      </div>
+      <div class="info-fila"><span class="info-label">ENTREGA</span><span class="info-val">${p.Entrega}</span></div>
       ${p.Direccion ? `<div class="info-fila"><span class="info-label">DIRECCIÓN</span><span class="info-val">${p.Direccion}</span></div>` : ""}
       ${p.Pago ? `<div class="info-fila"><span class="info-label">PAGO</span><span class="info-val">${p.Pago}</span></div>` : ""}
-
       <hr class="sep">
-
       <div class="total-fila">
         <span class="total-label">TOTAL</span>
         <span class="total-valor">${p.Total}</span>
       </div>
-
       <hr class="sep">
-
       <div class="t-footer">¡Gracias por tu pedido! 🦸<br>powered by AIMAX</div>
     `;
 
