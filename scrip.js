@@ -223,9 +223,12 @@ fetch(`${SUPABASE_URL}/rest/v1/pedidos`, {
   if (id) {
     msg += `\n\n🖨️ *Imprimir ticket:* https://aimx-studio.github.io/Super-H-roes-Girardot/ticket.html?id=${id}`;
   }
-})
-.catch(err => console.error("Error Supabase:", err))
-.finally(() => {
   window.location.href = "https://wa.me/" + numero + "?text=" + encodeURIComponent(msg);
   setTimeout(() => { location.reload(); }, 3000);
-});}
+})
+.catch(err => {
+  console.error("Error Supabase:", err);
+  window.location.href = "https://wa.me/" + numero + "?text=" + encodeURIComponent(msg);
+  setTimeout(() => { location.reload(); }, 3000);
+});
+}
