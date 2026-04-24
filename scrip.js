@@ -212,72 +212,20 @@ fetch(`${SUPABASE_URL}/rest/v1/pedidos`, {
     "apikey": SUPABASE_KEY,
     "Authorization": `Bearer ${SUPABASE_KEY}`,
     "Content-Type": "application/json",
-    "Prefer": "return=minimal"
+    "Prefer": "return=representation"
   },
   body: JSON.stringify(datosPedido)
-}).catch(err => console.error("Error Supabase:", err));
-
-// ─── GUARDAR TICKET EN SUPABASE STORAGE ──────────────────────────
-const ticketID = Date.now();
-const ticketHTML = generarTicketHTML(nombre, telefono, platos, tipoEntrega, direccion, numeroMesa, tipoPago, efectivo, especificaciones, total);
-
-fetch(`${SUPABASE_URL}/storage/v1/object/tickets/ticket-${ticketID}.html`, {
-  method: "POST",
-  headers: {
-    "apikey": SUPABASE_KEY,
-    "Authorization": `Bearer ${SUPABASE_KEY}`,
-    "Content-Type": "text/html",
-"cache-control": "3600",
-    "x-upsert": "true"
-  },
-  body: ticketHTML
-}).then(() => {
-  const ticketLink = `${SUPABASE_URL}/storage/v1/object/public/tickets/ticket-${ticketID}.html`;
-  msg += `\n\n🖨️ *Imprimir ticket:* ${ticketLink}`;
+}).then(res => res.json()).then(rows => {
+  const pedidoID = rows[0]?.id;
+  if (pedidoID) {
+    msg += `\n\n🖨️ *Imprimir ticket:* https://aimx-studio.github.io/Super-H-roes-Girardot/ticket.html?id=${pedidoID}`;
+  }
   window.location.href = "https://wa.me/" + numero + "?text=" + encodeURIComponent(msg);
-  setTimeout(() => { location.reload(true); }, 3000);
-}).catch((err) => {
-  }).catch((err) => {
-  console.error("Error Storage:", err);
+  setTimeout(() => { location.reload(); }, 3000);
+}).catch(err => {
+  console.error("Error Supabase:", err);
   window.location.href = "https://wa.me/" + numero + "?text=" + encodeURIComponent(msg);
-  setTimeout(() => { location.reload(true); }, 3000);
+  setTimeout(() => { location.reload(); }, 3000);
 });
 
   }
-  // ─── GENERAR TICKET IMPRIMIBLE 80mm ──────────────────────────────
-function generarTicketHTML(nombre, telefono, platos, tipoEntrega, direccion, numeroMesa, tipoPago, efectivo, especificaciones, total) {
-  const fecha = new Date().toLocaleString("es-CO", { timeZone: "America/Bogota" });
-  return `<!DOCTYPE html><html><head><meta charset="UTF-8">
-  <style>
-    @media print { @page { margin: 0; size: 80mm auto; } }
-    body { width: 300px; font-family: 'Courier New', monospace; font-size: 13px; margin: 0; padding: 8px; }
-    .centro { text-align: center; }
-    .linea { border-top: 1px dashed #000; margin: 6px 0; }
-    .negrita { font-weight: bold; }
-    .grande { font-size: 15px; font-weight: bold; }
-    .total { font-size: 16px; font-weight: bold; }
-  </style>
-  </head><body>
-  <div class="centro grande">SUPER HÉROES</div>
-  <div class="centro">Comidas Rápidas · Girardot</div>
-  <div class="centro" style="font-size:11px">${fecha}</div>
-  <div class="linea"></div>
-  <div><span class="negrita">Cliente:</span> ${nombre}</div>
-  <div><span class="negrita">Tel:</span> ${telefono}</div>
-  <div class="linea"></div>
-  <div class="negrita">PLATOS:</div>
-  <div>${platos.join("<br>")}</div>
-  <div class="linea"></div>
-  <div><span class="negrita">Entrega:</span> ${tipoEntrega}</div>
-  ${tipoEntrega === "A domicilio" && direccion ? `<div><span class="negrita">Dirección:</span> ${direccion}</div>` : ""}
-  ${tipoEntrega === "Comer dentro del local" && numeroMesa ? `<div><span class="negrita">Mesa:</span> ${numeroMesa}</div>` : ""}
-  <div><span class="negrita">Pago:</span> ${tipoPago}</div>
-  ${tipoPago === "Efectivo" && efectivo ? `<div><span class="negrita">Paga con:</span> ${efectivo}</div>` : ""}
-  ${especificaciones ? `<div><span class="negrita">Notas:</span> ${especificaciones}</div>` : ""}
-  <div class="linea"></div>
-  <div class="centro total">TOTAL: $${Number(total).toLocaleString("es-CO")}</div>
-  <div class="linea"></div>
-  <div class="centro" style="font-size:11px">¡Gracias por tu pedido! 🦸</div>
-  <script>window.onload = () => window.print();<\/script>
-  </body></html>`;
-}
