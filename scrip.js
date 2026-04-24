@@ -190,7 +190,7 @@ msg += `💰 *Total:* $${Number(total).toLocaleString("es-CO")}`;
       btn.textContent = "📲 Enviar Pedido por WhatsApp";
     }, 5000);
 
-    // ─── ENVÍO A SUPABASE ─────────────────────────────────────────────
+    // ─── ENVÍO A SUPABASE (en paralelo, sin bloquear el ticket) ──────────────
 const SUPABASE_URL = "https://rsiqorucrflmrfqejkeb.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzaXFvcnVjcmZsbXJmcWVqa2ViIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5ODk2MDEsImV4cCI6MjA5MjU2NTYwMX0.Dg8FqwX17zgiNlXOPJgz1IJQR3jDBizBgzQ-x-UvPZs";
 
@@ -203,29 +203,38 @@ const datosPedido = {
   Platos:    platos.join("\n"),
   Entrega:   tipoEntrega,
   Direccion: tipoEntrega === "A domicilio" ? direccion : "",
-  Total: "$" + Number(total).toLocaleString("es-CO")
+  Total:     "$" + Number(total).toLocaleString("es-CO")
 };
 
+// ── Construir el link del ticket con los datos en la URL (instantáneo) ──
+const ticketParams = new URLSearchParams({
+  fecha:   fechaHoy,
+  nombre:  nombre,
+  tel:     telefono,
+  platos:  platos.join("\n"),
+  entrega: tipoEntrega,
+  dir:     tipoEntrega === "A domicilio" ? direccion : "",
+  pago:    tipoPago,
+  total:   "$" + Number(total).toLocaleString("es-CO")
+});
+const ticketURL = `https://aimx-studio.github.io/Super-H-roes-Girardot/ticket.html?${ticketParams.toString()}`;
+
+msg += `\n\n🖨️ *Imprimir ticket:* ${ticketURL}`;
+
+// Abrir WhatsApp de inmediato (sin esperar Supabase)
+window.location.href = "https://wa.me/" + numero + "?text=" + encodeURIComponent(msg);
+setTimeout(() => { location.reload(); }, 3000);
+
+// Guardar en Supabase en segundo plano (para tu registro, no bloquea nada)
 fetch(`${SUPABASE_URL}/rest/v1/pedidos`, {
   method: "POST",
   headers: {
     "apikey": SUPABASE_KEY,
     "Authorization": `Bearer ${SUPABASE_KEY}`,
     "Content-Type": "application/json",
-    "Prefer": "return=representation"
+    "Prefer": "return=minimal"
   },
   body: JSON.stringify(datosPedido)
-}).then(res => res.json()).then(rows => {
-  const pedidoID = rows[0]?.id;
-  if (pedidoID) {
-    msg += `\n\n🖨️ *Imprimir ticket:* https://aimx-studio.github.io/Super-H-roes-Girardot/ticket.html?id=${pedidoID}`;
-  }
-  window.location.href = "https://wa.me/" + numero + "?text=" + encodeURIComponent(msg);
-  setTimeout(() => { location.reload(); }, 3000);
-}).catch(err => {
-  console.error("Error Supabase:", err);
-  window.location.href = "https://wa.me/" + numero + "?text=" + encodeURIComponent(msg);
-  setTimeout(() => { location.reload(); }, 3000);
-});
+}).catch(err => console.error("Error Supabase:", err));
 
   }

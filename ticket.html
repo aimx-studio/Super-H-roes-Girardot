@@ -24,7 +24,6 @@
     color: #666;
   }
 
-  /* TICKET */
   .ticket {
     width: 100%;
     max-width: 340px;
@@ -35,185 +34,38 @@
     font-family: 'Courier Prime', monospace;
   }
 
-  /* HEADER */
-  .t-brand {
-    text-align: center;
-    margin-bottom: 4px;
-  }
+  .t-brand { text-align: center; margin-bottom: 4px; }
+  .t-nombre { font-family: 'DM Sans', sans-serif; font-size: 26px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #111; }
+  .t-sub { font-family: 'Courier Prime', monospace; font-size: 12px; color: #555; margin-top: 2px; }
+  .t-direccion { font-size: 11px; color: #888; margin-top: 2px; }
 
-  .t-nombre {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 26px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #111;
-  }
+  .sep { border: none; border-top: 1px dashed #bbb; margin: 12px 0; }
 
-  .t-sub {
-    font-family: 'Courier Prime', monospace;
-    font-size: 12px;
-    color: #555;
-    margin-top: 2px;
-  }
+  .fila { display: flex; justify-content: space-between; align-items: flex-start; font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .fila-val { font-size: 13px; color: #111; font-weight: 600; text-transform: none; letter-spacing: 0; text-align: right; }
 
-  .t-direccion {
-    font-size: 11px;
-    color: #888;
-    margin-top: 2px;
-  }
+  .sec-label { font-size: 10px; color: #999; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; }
 
-  /* SEPARADOR */
-  .sep {
-    border: none;
-    border-top: 1px dashed #bbb;
-    margin: 12px 0;
-  }
+  .cliente-nombre { font-family: 'DM Sans', sans-serif; font-size: 20px; font-weight: 700; color: #111; margin-bottom: 2px; }
+  .cliente-tel { font-size: 13px; color: #555; }
 
-  /* FILA */
-  .fila {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    font-size: 11px;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 4px;
-  }
+  .plato-item { display: flex; gap: 10px; align-items: baseline; margin-bottom: 5px; font-size: 13px; color: #222; }
+  .plato-cant { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 13px; color: #c62828; flex-shrink: 0; min-width: 28px; }
+  .plato-nombre { flex: 1; line-height: 1.4; }
 
-  .fila-val {
-    font-size: 13px;
-    color: #111;
-    font-weight: 600;
-    text-transform: none;
-    letter-spacing: 0;
-    text-align: right;
-  }
+  .info-fila { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px; }
+  .info-label { color: #999; text-transform: uppercase; letter-spacing: 1px; font-size: 11px; }
+  .info-val { font-weight: 600; color: #111; font-size: 13px; }
 
-  /* SECCIÓN */
-  .sec-label {
-    font-size: 10px;
-    color: #999;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 6px;
-  }
+  .total-fila { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
+  .total-label { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #111; }
+  .total-valor { font-family: 'DM Sans', sans-serif; font-size: 22px; font-weight: 700; color: #111; }
 
-  /* CLIENTE */
-  .cliente-nombre {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: #111;
-    margin-bottom: 2px;
-  }
+  .t-footer { text-align: center; font-size: 11px; color: #aaa; margin-top: 4px; }
 
-  .cliente-tel {
-    font-size: 13px;
-    color: #555;
-  }
+  .acciones { display: flex; gap: 10px; margin-bottom: 16px; width: 100%; max-width: 340px; }
+  .btn-imprimir { flex: 1; background: #c62828; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: 'DM Sans', sans-serif; }
 
-  /* PLATOS */
-  .plato-item {
-    display: flex;
-    gap: 10px;
-    align-items: baseline;
-    margin-bottom: 5px;
-    font-size: 13px;
-    color: #222;
-  }
-
-  .plato-cant {
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    color: #c62828;
-    flex-shrink: 0;
-    min-width: 28px;
-  }
-
-  .plato-nombre {
-    flex: 1;
-    line-height: 1.4;
-  }
-
-  /* ENTREGA / PAGO */
-  .info-fila {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    margin-bottom: 5px;
-  }
-
-  .info-label {
-    color: #999;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 11px;
-  }
-
-  .info-val {
-    font-weight: 600;
-    color: #111;
-    font-size: 13px;
-  }
-
-  /* TOTAL */
-  .total-fila {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 4px;
-  }
-
-  .total-label {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #111;
-  }
-
-  .total-valor {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: #111;
-  }
-
-  /* FOOTER */
-  .t-footer {
-    text-align: center;
-    font-size: 11px;
-    color: #aaa;
-    margin-top: 4px;
-  }
-
-  /* BOTONES */
-  .acciones {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 16px;
-    width: 100%;
-    max-width: 340px;
-  }
-
-  .btn-imprimir {
-    flex: 1;
-    background: #c62828;
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-  }
-
-  /* PRINT */
   @media print {
     body { background: white; padding: 0; }
     .acciones { display: none !important; }
@@ -233,102 +85,90 @@
 <div class="ticket" id="ticket" style="display:none"></div>
 
 <script>
-  const SUPABASE_URL = "https://rsiqorucrflmrfqejkeb.supabase.co";
-  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzaXFvcnVjcmZsbXJmcWVqa2ViIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5ODk2MDEsImV4cCI6MjA5MjU2NTYwMX0.Dg8FqwX17zgiNlXOPJgz1IJQR3jDBizBgzQ-x-UvPZs";
-
+  // ── LEER DATOS DIRECTAMENTE DE LA URL (sin llamada a Supabase) ──────────
   const params = new URLSearchParams(window.location.search);
-  const ticketID = params.get("id");
 
-  if (!ticketID) {
+  const p = {
+    id:       params.get("id")       || "—",
+    Fecha:    params.get("fecha")    || "—",
+    Nombre:   params.get("nombre")   || "—",
+    Telefono: params.get("tel")      || "—",
+    Platos:   params.get("platos")   || "",
+    Entrega:  params.get("entrega")  || "—",
+    Direccion:params.get("dir")      || "",
+    Pago:     params.get("pago")     || "",
+    Total:    params.get("total")    || "—"
+  };
+
+  if (!params.has("nombre") && !params.has("platos")) {
     document.getElementById("cargando").textContent = "❌ No se encontró el ticket.";
   } else {
-    fetch(`${SUPABASE_URL}/rest/v1/pedidos?id=eq.${ticketID}&select=*`, {
-      headers: {
-        "apikey": SUPABASE_KEY,
-        "Authorization": `Bearer ${SUPABASE_KEY}`,
-        "Content-Type": "application/json"
+    const platos = p.Platos.split("\n").filter(Boolean);
+
+    const platosHTML = platos.map(linea => {
+      const match = linea.match(/[•\-]?\s*(\d+)x?\s+(.+)/);
+      if (match) {
+        return `<div class="plato-item">
+          <span class="plato-cant">${match[1]}x</span>
+          <span class="plato-nombre">${match[2]}</span>
+        </div>`;
       }
-    })
-    .then(res => res.json())
-    .then(data => {
-      if (!data || data.length === 0) {
-        document.getElementById("cargando").textContent = "❌ Ticket no encontrado.";
-        return;
-      }
+      return `<div class="plato-item"><span class="plato-nombre">${linea.replace(/^[•\-]\s*/, '')}</span></div>`;
+    }).join("");
 
-      const p = data[0];
-      const platos = (p.Platos || "").split("\n").filter(Boolean);
+    document.getElementById("ticket").innerHTML = `
+      <div class="t-brand">
+        <div class="t-nombre">Super Héroes</div>
+        <div class="t-sub">Comidas Rápidas</div>
+        <div class="t-direccion">Plazoleta Comidas · Parque Central Local 1 · Girardot</div>
+      </div>
 
-      // Parsear platos — formato: "• 2x Nombre del plato"
-      const platosHTML = platos.map(linea => {
-        const match = linea.match(/[•\-]?\s*(\d+)x?\s+(.+)/);
-        if (match) {
-          return `<div class="plato-item">
-            <span class="plato-cant">${match[1]}x</span>
-            <span class="plato-nombre">${match[2]}</span>
-          </div>`;
-        }
-        return `<div class="plato-item"><span class="plato-nombre">${linea.replace(/^[•\-]\s*/, '')}</span></div>`;
-      }).join("");
+      <hr class="sep">
 
-      const ticketEl = document.getElementById("ticket");
-      ticketEl.innerHTML = `
-        <div class="t-brand">
-          <div class="t-nombre">Super Héroes</div>
-          <div class="t-sub">Comidas Rápidas</div>
-          <div class="t-direccion">Plazoleta Comidas · Parque Central Local 1 · Girardot</div>
-        </div>
+      <div class="fila">
+        <span>PEDIDO #</span>
+        <span class="fila-val">${p.id}</span>
+      </div>
+      <div class="fila">
+        <span>FECHA/HORA</span>
+        <span class="fila-val">${p.Fecha}</span>
+      </div>
 
-        <hr class="sep">
+      <hr class="sep">
 
-        <div class="fila">
-          <span>PEDIDO #</span>
-          <span class="fila-val">${p.id || "—"}</span>
-        </div>
-        <div class="fila">
-          <span>FECHA/HORA</span>
-          <span class="fila-val">${p.Fecha || "—"}</span>
-        </div>
+      <div class="sec-label">CLIENTE</div>
+      <div class="cliente-nombre">${p.Nombre}</div>
+      <div class="cliente-tel">📞 ${p.Telefono}</div>
 
-        <hr class="sep">
+      <hr class="sep">
 
-        <div class="sec-label">CLIENTE</div>
-        <div class="cliente-nombre">${p.Nombre || "—"}</div>
-        <div class="cliente-tel">📞 ${p.Telefono || "—"}</div>
+      <div class="sec-label">DETALLE DEL PEDIDO</div>
+      ${platosHTML}
 
-        <hr class="sep">
+      <hr class="sep">
 
-        <div class="sec-label">DETALLE DEL PEDIDO</div>
-        ${platosHTML}
+      <div class="info-fila">
+        <span class="info-label">ENTREGA</span>
+        <span class="info-val">${p.Entrega}</span>
+      </div>
+      ${p.Direccion ? `<div class="info-fila"><span class="info-label">DIRECCIÓN</span><span class="info-val">${p.Direccion}</span></div>` : ""}
+      ${p.Pago ? `<div class="info-fila"><span class="info-label">PAGO</span><span class="info-val">${p.Pago}</span></div>` : ""}
 
-        <hr class="sep">
+      <hr class="sep">
 
-        <div class="info-fila">
-          <span class="info-label">ENTREGA</span>
-          <span class="info-val">${p.Entrega || "—"}</span>
-        </div>
-        ${p.Direccion ? `<div class="info-fila"><span class="info-label">DIRECCIÓN</span><span class="info-val">${p.Direccion}</span></div>` : ""}
-        ${p.Pago ? `<div class="info-fila"><span class="info-label">PAGO</span><span class="info-val">${p.Pago}</span></div>` : ""}
+      <div class="total-fila">
+        <span class="total-label">TOTAL</span>
+        <span class="total-valor">${p.Total}</span>
+      </div>
 
-        <hr class="sep">
+      <hr class="sep">
 
-        <div class="total-fila">
-          <span class="total-label">TOTAL</span>
-          <span class="total-valor">${p.Total || "—"}</span>
-        </div>
+      <div class="t-footer">¡Gracias por tu pedido! 🦸<br>powered by AIMAX</div>
+    `;
 
-        <hr class="sep">
-
-        <div class="t-footer">¡Gracias por tu pedido! 🦸<br>powered by AIMAX</div>
-      `;
-
-      document.getElementById("cargando").style.display = "none";
-      document.getElementById("acciones").style.display = "flex";
-      ticketEl.style.display = "block";
-    })
-    .catch(() => {
-      document.getElementById("cargando").textContent = "❌ Error al cargar el ticket.";
-    });
+    document.getElementById("cargando").style.display = "none";
+    document.getElementById("acciones").style.display = "flex";
+    document.getElementById("ticket").style.display = "block";
   }
 </script>
 </body>
