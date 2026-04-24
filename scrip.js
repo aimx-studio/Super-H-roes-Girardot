@@ -141,7 +141,7 @@
         if (span) precio = Number(span.innerText.replace(/\$|\.|,/g, ""));
       }
 
-      platos.push(`• ${cantidad}x ${nombre_plato}`);
+      platos.push(`• ${nombre_plato} × ${cantidad}`);
     });
 
     if (platos.length === 0) {
@@ -217,7 +217,12 @@ fetch(`${SUPABASE_URL}/rest/v1/pedidos`, {
   },
   body: JSON.stringify(datosPedido)
 })
-.then(res => res.json())
+.then(res => {
+  if (!res.ok) {
+    return res.json().then(err => { throw new Error(JSON.stringify(err)); });
+  }
+  return res.json();
+})
 .then(data => {
   const id = data?.[0]?.id;
   if (id) {
